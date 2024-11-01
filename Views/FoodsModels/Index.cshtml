@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Home.Models.FoodsModel>
+
+@{
+    ViewData["Title"] = "Foods";
+}
+
+<h1>Foods</h1>
+
+<p>
+    <a asp-action="Create">Create New Food</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.foodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foodCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foodprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foodcomment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fooddate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodprice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodcomment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fooddate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form id="foodPriceForm">
+    <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="StartDate" required />
+    </div>
+    <div>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="EndDate" required />
+    </div>
+    <button type="submit">Get Total Price</button>
+</form>
+
+<div id="totalPriceDisplay" style="margin-top: 20px; font-weight: bold;"></div>
+
+<ol id="listContainer"></ol>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#foodPriceForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const endDate = $('#endDate').val();
+
+            // Ensure the date is in the 'yyyy-MM-dd' format for DateOnly
+            const formattedStartDate = new Date(startDate).toISOString().split('T')[0];
+            const formattedEndDate = new Date(endDate).toISOString().split('T')[0];
+
+            $.ajax({
+                url: '/FoodsModels/GetTotalFoodPrice',
+                type: 'POST',
+                contentType: 'application/json',
+                success: function (response) {
+                    $('#totalPriceDisplay').text('Total Food Price: ' + response.totalFoodPrice).show();
+
+                    $('#listContainer').empty();
+                    response.foodsList.map(food => {
+                        $('#listContainer').append(`
+                            <li>
+                                <strong>Name:</strong> ${food.foodName}<br>
+                                <strong>Category:</strong> ${food.foodCategory}<br>
+                                <strong>Price:</strong> ${food.foodprice}<br>
+                                <strong>Date Added:</strong> ${food.fooddate}
+                            </li>
+                        `);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    $('#totalPriceDisplay').text('An error occurred: ' + error).show();
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    #totalPriceDisplay {
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: none; 
+    }
+</style>

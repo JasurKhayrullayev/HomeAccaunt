@@ -1,0 +1,57 @@
+﻿@model Home.Models.MobilesModel
+
+@{
+    ViewData["Title"] = "Edit Mobile";
+}
+
+<h1>Edit Mobile Communication</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="mobnumber" class="control-label">Mobile Number</label>
+                <input asp-for="mobnumber" class="form-control" />
+                <span asp-validation-for="mobnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobname" class="control-label">Mobile Name</label>
+                <input asp-for="mobname" class="form-control" />
+                <span asp-validation-for="mobname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobcategory" class="control-label">Mobile Category</label>
+                <input asp-for="mobcategory" class="form-control" />
+                <span asp-validation-for="mobcategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobprice" class="control-label">Mobile Price</label>
+                <input asp-for="mobprice" class="form-control" />
+                <span asp-validation-for="mobprice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobcomment" class="control-label">Mobile Comment</label>
+                <input asp-for="mobcomment" class="form-control" />
+                <span asp-validation-for="mobcomment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobdate" class="control-label">Mobile Date</label>
+                <input type="date" asp-for="mobdate" class="form-control" />
+                <span asp-validation-for="mobdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

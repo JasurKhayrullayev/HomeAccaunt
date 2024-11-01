@@ -1,0 +1,56 @@
+﻿@model Home.Models.InternetsModel
+
+@{
+    ViewData["Title"] = "Delete Internet";
+}
+
+<h1>Delete Internet</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inpcodenum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inpcodenum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.incategory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.incategory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inprice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.incomment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.incomment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.indate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.indate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

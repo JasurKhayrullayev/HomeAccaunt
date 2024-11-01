@@ -1,0 +1,53 @@
+﻿@model Home.Models.InternetsModel
+
+@{
+    ViewData["Title"] = "Internet Details";
+}
+
+<h1>Internet Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inpcodenum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inpcodenum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.incategory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.incategory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inprice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.incomment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.incomment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.indate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.indate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

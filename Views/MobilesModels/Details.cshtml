@@ -1,0 +1,53 @@
+﻿@model Home.Models.MobilesModel
+
+@{
+    ViewData["Title"] = "Mobile Details";
+}
+
+<h1>Mobile Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobnumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobnumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobcategory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobcategory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobprice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobcomment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobcomment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

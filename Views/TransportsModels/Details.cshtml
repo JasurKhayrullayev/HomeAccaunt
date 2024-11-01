@@ -1,0 +1,47 @@
+﻿@model Home.Models.TransportsModel
+
+@{
+    ViewData["Title"] = "Transport Details";
+}
+
+<h1>Transport Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trcategory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trcategory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trprice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trprice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trcomment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trcomment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
